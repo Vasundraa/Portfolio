@@ -5,7 +5,7 @@ import './styles.css';
 const LINKS = {
   github: 'https://github.com/Vasundraa',
   linkedin: 'https://linkedin.com/in/vasundraa-s',
-  email: 'mailto:vasundraas@gmail.com?subject=Portfolio%20Enquiry',
+  email: 'https://mail.google.com/mail/?view=cm&fs=1&to=vasundraas@gmail.com&su=Portfolio%20Enquiry',
   resume: '/assets/Vasundraa_S_Resume.pdf',
 };
 
@@ -157,11 +157,42 @@ const skills = [
 ];
 
 const journey = [
-  { year: 'College years', title: 'Web Development Foundation', text: 'Started with HTML/CSS, Django and PostgreSQL for application projects, then expanded into React.' },
-  { year: '2023–24', title: 'Project & Internship Development', text: 'Worked on recycling, newborn-care and frontend projects, building practical application experience.' },
-  { year: '2025', title: 'Real-world Software Development', text: 'Contributed to Cura as a software development intern and worked with real application data and tracking workflows.' },
-  { year: '2026', title: 'Data Analytics Path', text: 'Built a structured learning path: Excel → SQL → Statistics → Power BI → Python → foundations/DSA.' },
-  { year: 'Now', title: 'Machine Learning', text: 'Continuing into ML with linear and logistic regression while combining development and analytics experience.' }
+  {
+    year: 'College years',
+    title: 'Web Development Foundation',
+    text: 'Started with HTML and CSS, then learned Django with PostgreSQL to build database-backed web applications. Later expanded into React for component-based frontend development.',
+    learned: ['HTML and CSS fundamentals for building web interfaces', 'Django for backend development, application routing and database-backed workflows', 'PostgreSQL and relational database concepts used with Django', 'React JS for reusable, component-based user interfaces']
+  },
+  {
+    year: '2023–24',
+    title: 'Project & Internship Development',
+    text: 'Applied the web-development foundation to practical projects including recycling, waste collection and newborn-care applications.',
+    learned: ['Built practical application features using Python, Django and React', 'Worked with forms, application workflows and relational data', 'Developed frontend components for Shishu Aagaar', 'Built a Django-based recycling and waste-collection application during internship work']
+  },
+  {
+    year: '2025',
+    title: 'Real-world Software Development',
+    text: 'Contributed to Cura during a software-development internship, working with health-tracking features, alerts and application data workflows.',
+    learned: ['Worked with React JS and Firebase in a real application environment', 'Contributed to real-time health-tracking and alert functionality', 'Worked with retrieving, displaying and updating application data', 'Strengthened practical software-development and collaboration experience']
+  },
+  {
+    year: '2026',
+    title: 'Excel & Business Analytics',
+    text: 'Started a structured data-analytics path with Excel, learning to clean business data, summarize it and turn it into management-focused reports.',
+    learned: ['Data cleaning and validation', 'PivotTables, PivotCharts and business dashboards', 'VLOOKUP, XLOOKUP, IF, SUMIF and COUNTIF', 'KPI analysis, charts, trend analysis and business reporting']
+  },
+  {
+    year: '2026',
+    title: 'SQL, Statistics & Power BI',
+    text: 'Moved from spreadsheet analysis into relational data and interactive BI, using healthcare and manufacturing datasets to answer business questions.',
+    learned: ['SQL filtering, sorting, grouping, aggregate functions and JOINs', 'Data profiling, duplicate/null checks and data-quality cleaning', 'Descriptive statistics and data validation fundamentals', 'Power Query, data modeling, DAX, KPI dashboards, slicers and interactive reports']
+  },
+  {
+    year: 'Now',
+    title: 'Python & Machine Learning',
+    text: 'Continuing with Python for data work and building machine-learning foundations. The current focus is supervised learning through Linear Regression and Logistic Regression.',
+    learned: ['Python fundamentals with NumPy, Pandas and Seaborn practice', 'Data preparation and basic analysis workflows in Python', 'Currently learning Linear Regression and Logistic Regression', 'Learning train-test workflows, model evaluation and feature scaling', 'Continuing to expand machine-learning knowledge step by step']
+  }
 ];
 
 function App() {
@@ -197,7 +228,7 @@ function App() {
         <a href={LINKS.github} target="_blank" rel="noreferrer">GitHub ↗</a>
         <a href={LINKS.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
         <a href={LINKS.email}>Email ↗</a>
-        <a href={LINKS.resume} download="Vasundraa_S_Resume.pdf">Resume ↓</a>
+        <a href={LINKS.resume} target="_blank" rel="noreferrer">View Resume ↗</a>
         </div>
     </aside>
 
@@ -229,7 +260,7 @@ function Overview({ onExplore }) {
         <div className="eyebrow"><span className="pulse"/> DEVELOPER × ANALYTICS × ML</div>
         <h1><strong>Vasundraa S</strong><span className="hero-role">Data Analyst • Developer • ML Learner</span><em>Building applications.<br/>Turning data into decisions.</em></h1>
         <p>I’m Vasundraa — a developer with hands-on web application experience and a growing data analytics and machine-learning toolkit.</p>
-        <div className="hero-actions"><button className="primary" onClick={onExplore}>Explore projects <span>→</span></button><a className="ghost" href={LINKS.github} target="_blank" rel="noreferrer">View GitHub ↗</a><a className="ghost" href={LINKS.resume} download="Vasundraa_S_Resume.pdf">Download Resume ↓</a><a className="ghost" href={LINKS.email}>Email Me ↗</a></div>
+        <div className="hero-actions"><button className="primary" onClick={onExplore}>Explore projects <span>→</span></button><a className="ghost" href={LINKS.github} target="_blank" rel="noreferrer">View GitHub ↗</a><a className="ghost" href={LINKS.resume} target="_blank" rel="noreferrer">View Resume ↗</a><a className="ghost" href={LINKS.resume} download="Vasundraa_S_Resume.pdf">Download Resume ↓</a><a className="ghost" href={LINKS.email}>Email Me ↗</a></div>
       </div>
       <div className="hero-orbit"><div className="orbit orbit-1"/><div className="orbit orbit-2"/><div className="orbit-core"><b>VS</b><span>2026</span></div><div className="orbit-chip chip-a">React</div><div className="orbit-chip chip-b">SQL</div><div className="orbit-chip chip-c">Power BI</div><div className="orbit-chip chip-d">Python</div></div>
     </section>
@@ -311,7 +342,36 @@ function Skills({ skills, selected, setSelected }) {
   return <div className="content skills-page"><section className="section-heading"><div><span className="eyebrow">SKILL MAP</span><h1>Tools I actually use</h1><p>Click a skill to see where it connects to my work and what I have learned.</p></div></section><div className="skills-layout"><div className="skill-cloud">{skills.map(s=><button className={selected?.name===s.name?'chosen':''} onClick={()=>setSelected(s)} key={s.name}><span>{s.name}</span><small>{s.group}</small></button>)}</div><div className="skill-detail">{selected ? <><span className="eyebrow">SELECTED SKILL</span><h2>{selected.name}</h2><span className="detail-group">{selected.group}</span><p className="skill-used"><b>Used in:</b> {selected.used}</p><h4>WHAT I LEARNED</h4><ul className="skill-learned">{selected.details.map((item,i)=><li key={i}>{item}</li>)}</ul></> : <><span className="eyebrow">INTERACTIVE</span><h2>Explore the map</h2><p>Select any technology to see how I have used or am learning it.</p></>}<div className="group-list">{groups.map(g=><span key={g}>{g}</span>)}</div></div></div></div>;
 }
 
-function Journey() { return <div className="content journey-page"><section className="section-heading"><div><span className="eyebrow">LEARNING PATH</span><h1>From building apps to building models.</h1><p>My path has moved from web development into analytics and now machine learning — while keeping the development foundation underneath.</p></div></section><div className="timeline">{journey.map((j,i)=><div className="timeline-item" key={j.year}><div className="time-dot">{String(i+1).padStart(2,'0')}</div><div className="time-content"><span>{j.year}</span><h3>{j.title}</h3><p>{j.text}</p></div></div>)}</div><div className="journey-cta"><span className="eyebrow">CURRENTLY LEARNING</span><h2>Linear regression → Logistic regression → more ML</h2><p>The portfolio will grow as the learning path grows.</p></div></div>; }
+function Journey() {
+  return <div className="content journey-page">
+    <section className="section-heading">
+      <div>
+        <span className="eyebrow">LEARNING PATH</span>
+        <h1>From building apps to building models.</h1>
+        <p>A practical learning journey from web development to data analytics and now machine learning — showing not just what I studied, but what I learned to do with each stage.</p>
+      </div>
+    </section>
+
+    <div className="timeline">
+      {journey.map((j,i) => <article className="timeline-item" key={`${j.year}-${j.title}`}>
+        <div className="time-dot">{String(i+1).padStart(2,'0')}</div>
+        <div className="time-content">
+          <span>{j.year}</span>
+          <h3>{j.title}</h3>
+          <p>{j.text}</p>
+          <h4>WHAT I LEARNED</h4>
+          <ul>{j.learned.map((item, index) => <li key={index}>{item}</li>)}</ul>
+        </div>
+      </article>)}
+    </div>
+
+    <div className="journey-cta">
+      <span className="eyebrow">CURRENTLY LEARNING</span>
+      <h2>Linear Regression → Logistic Regression → More ML</h2>
+      <p>I am continuing to build the foundations before moving into more advanced machine-learning topics.</p>
+    </div>
+  </div>;
+}
 
 function Stat({n,label,note}) { return <div className="stat-card"><b>{n}</b><div><strong>{label}</strong><span>{note}</span></div></div> }
 function PanelTitle({kicker,title}) { return <div className="panel-title"><span>{kicker}</span><h3>{title}</h3></div> }
